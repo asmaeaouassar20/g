@@ -1,0 +1,174 @@
+* {
+    margin:0;
+    padding:0;
+}
+body{
+
+
+    font-weight: 900;
+}
+.head{
+
+    display: flex;
+    justify-content: end;
+    height: 20px;
+    padding-right: 38px;
+    padding-top: 10px;
+
+}
+input, .label , td {
+    background-color: rgba(210, 205, 197, 0.455);
+}
+.container{
+    width:80%;
+    margin: 10px auto;
+}
+
+h1 {
+    text-align: center;
+}
+/*----------------- dark mode toggle ----------------------------------------*/
+.label {
+    width:55px;
+    height:25px;
+    display: flex;
+    border-radius: 50px;
+    margin-right:80px ;
+    margin-top:10px ;
+    cursor:pointer;
+    justify-content: left;
+    align-items: center;
+}
+.move{
+    background-color: #fff;
+    height:20px;
+    width:20px;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+/*----------------- button ----------------------------------------*/
+button{
+    margin: 6px;
+    padding:4px;
+    border:none;
+    font-weight: 700;
+    cursor:pointer;
+}
+/*----------------- input ----------------------------------------*/
+input{
+    border:none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    outline:none;
+}
+input::placeholder{
+    font-weight: 400;
+    word-spacing: 5px;
+}
+
+/*----------------- nombre des membres du club ----------------------------------------*/
+.number_of_members{
+    text-align: center;
+    margin-top:52px;
+    margin-bottom: 15px;
+}
+/*----------------- boutton d'ajout  ----------------------------------------*/
+.add{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info{
+    width:60%;
+}
+
+
+.info input {
+    width: 90%;
+    margin:2px;
+    border-radius: 8px;
+    padding: 10px;
+}
+/*----------------- bouton d'ajout ----------------------------------------*/
+#addBtn {
+    width:55px;
+    height:100px;
+    border-radius: 8px;
+    background-color: rgb(199, 227, 157);
+    position:relative;
+    overflow: hidden;
+}
+#addBtn::before{
+    content:" ";
+    width:0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgb(201, 245, 136);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    transition: width .4s ease, height .2s ease;
+ 
+}
+#addBtn:hover::before{
+    width:120px;
+    height:120px;
+}
+#addBtn span {
+    position: relative;
+    z-index:1;
+}
+
+
+.operations{
+    margin-top:30px;
+    text-align: center;
+}
+/* ------------- search  input ------------------------------------ */
+.operations input {
+    width:300px;
+    margin-right: 70px;
+    padding: 4px;
+}
+
+
+.operations .sort {
+    margin-right: 70px;
+}
+/*------------------ boutons de trie -------------------------*/
+.sort button {
+    padding: 4px 28px;
+    border-radius: 10px;
+    background-color: rgb(199, 227, 157);
+    transition: all .5s ease;
+}
+.sort button:hover{
+    transform: scale(1.1);
+}
+/*------------------ table -------------------------*/
+td{
+    /* border: 1px solid #683d01; */
+    border-radius: 4px;
+}
+td,th{
+    padding: 5px;
+    text-align: center;
+}
+table {
+    margin: 50px auto;
+    width:90%;
+    font-size: 20px;
+
+}
+/*----------------------------- icone de suppression -------------------------------*/
+.iconee{
+    cursor:pointer;
+    transition:all .5s ease;
+}
+.iconee:hover{
+    transform: scale(1.5);
+}
+
