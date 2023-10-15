@@ -149,7 +149,8 @@ function ajouter_membre(){
     var membre = {
         fullname : fullname.value,
         phonenumber : phonenumber.value,
-        slvl : slvl.value
+        slvl : slvl.value,
+        bonus: 0 //lorsqu'un membre s'ajoute pour la premiere fois, il a bonus=0
     }
     tab_of_members.push(membre); //ajouter le membre dans le tableau javascript
     localStorage.setItem("table",JSON.stringify(tab_of_members));
@@ -157,7 +158,7 @@ function ajouter_membre(){
     a_ajouter = `
             <tr>
                 <td class="cacher">${numero_membre_a_ajouter}</td>
-                <td>${membre.fullname}</td>
+                <td>${membre.fullname} (<span>${membre.bonus}</span>)</td>
                 <td>${membre.phonenumber}</td>
                 <td>${membre.slvl}</td>
                 <td><i class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
@@ -176,12 +177,12 @@ function afficher(){
         tbody.innerHTML+=`
         <tr>
             <td class="cacher">${i}</td>
-            <td>${tab_of_members[i].fullname}</td>
+            <td>${tab_of_members[i].fullname} (<span>${tab_of_members[i].bonus}</span>)</td>
             <td>${tab_of_members[i].phonenumber}</td>
             <td>${tab_of_members[i].slvl}</td>
             <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
             <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
-            <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
+            <td><i onclick="ajouter_bonus(${i})" class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
         </tr>
         
         `
@@ -192,6 +193,13 @@ afficher();
 //------- fonction qui permet de supprimer un membre -------------------
 function supprimer_membre(i){
     tab_of_members.splice(i,1);
+    localStorage.setItem("table",JSON.stringify(tab_of_members));
+    afficher();
+}
+
+//-------- fonction qui permet d'ajouter des bonus -----------
+function ajouter_bonus(i){
+    tab_of_members[i].bonus+=1;
     localStorage.setItem("table",JSON.stringify(tab_of_members));
     afficher();
 }
