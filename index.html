@@ -16,14 +16,14 @@
     </div>
     <div class="container">
         <h1>Name of the club</h1>
-        <div class="number_of_members">{ 100 }</div>
+        <div class="number_of_members">{ <span id="total_number"></span> }</div>
         <div class="add">
             <div class="info">
                 <div><input type="text" placeholder="full name" id="fullname"></div>
                 <div><input type="number" placeholder="phone number" id="phonenumber"></div>
                 <div><input type="text" placeholder="school level" id="slvl"></div>
             </div>
-            <button id="addBtn"><span>Add</span></button>
+            <button onclick="ajouter_membre()" id="addBtn"><span>Add</span></button>
         </div>
 
         <div class="operations">
@@ -38,6 +38,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th class="cacher"></th>
                         <th>Full Name (bonus)</th>
                         <th>phone number</th>
                         <th>niveau</h>
@@ -47,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td>asmae aouassar (8)</td>
                         <td>0688690708</td>
                         <td>1 cycle</td>
@@ -64,7 +65,7 @@
                     <td><i class="fa-solid fa-pen" style="color: #03a800;"></i></td>
                     <td><i class="fa-solid fa-star" style="color: #d3d600;"></i></td>
                </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>

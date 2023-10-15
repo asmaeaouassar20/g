@@ -23,6 +23,7 @@ var total_number=document.querySelector("#total_number");
 
 
 
+
    
 //cliquer sur le bouton dark mode toggle
 // function darkmode(){
@@ -134,11 +135,16 @@ defineMode(); //cette fonction s'applique une fois on ouvre la page
 //     addBtn.style.color="yellow";
 // })  
 
+//------------------- apporter les informations à partir du localStorage s'il n'est pas vide ----------
+var tab_of_members;
+if(localStorage.getItem("table")!=null)
+    tab_of_members=JSON.parse(localStorage.getItem("table"));
+else tab_of_members=[];
 
-var tab_of_members=[];
 
 // ------------  fonction qui ajoute un nouveau membre en cliquant sur le boutton add -------------------
 function ajouter_membre(){
+    var numero_membre_a_ajouter=tab_of_members.length;
     total_number.innerHTML=tab_of_members.length+ +1;
     var membre = {
         fullname : fullname.value,
@@ -150,10 +156,11 @@ function ajouter_membre(){
     var a_ajouter='';
     a_ajouter = `
             <tr>
+                <td class="cacher">${numero_membre_a_ajouter}</td>
                 <td>${membre.fullname}</td>
                 <td>${membre.phonenumber}</td>
                 <td>${membre.slvl}</td>
-                <td><i class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
+                <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
                 <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
                 <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
             </tr>
@@ -161,3 +168,27 @@ function ajouter_membre(){
     tbody.innerHTML+=a_ajouter;
 }
 
+// ------------------ fonction qui permet d'afficher les informations sur la page html -------------
+function afficher(){
+    total_number.innerHTML=tab_of_members.length;
+    for(let i=0 ; i<tab_of_members.length ; i++){
+        tbody.innerHTML+=`
+        <tr>
+            <td class="cacher">${i}</td>
+            <td>${tab_of_members[i].fullname}</td>
+            <td>${tab_of_members[i].phonenumber}</td>
+            <td>${tab_of_members[i].slvl}</td>
+            <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can" style="color: #e00000;"></i></td>
+            <td><i class="fa-solid fa-pen" style="color: #03a800;"></i></td>
+            <td><i class="fa-solid fa-star" style="color: #d3d600;"></i></td>
+        </tr>
+        
+        `
+    }
+}
+afficher();
+
+//------- fonction qui permet de supprimer un membre -------------------
+function supprimer_membre(i){
+    
+}

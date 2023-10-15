@@ -173,3 +173,7 @@ table {
     transform: scale(1.5);
 }
 
+/*----------------- cacher la premiere colonne du tableau qui contient la numérotation des membres --------------------*/
+.cacher {
+    display: none;
+}
