@@ -2,15 +2,6 @@
 
 
 
-
-//local storage pour le mode_darl_light
-
-
-
-
-
-
-
 var modeBtn=document.querySelector("#modeBtn"),
     body=document.querySelector("body"),
     addBtn=document.querySelector("#addBtn"),
@@ -26,6 +17,8 @@ var modeBtn=document.querySelector("#modeBtn"),
 
 
 var label=document.querySelector("label");
+
+var total_number=document.querySelector("#total_number");
 
 
 
@@ -140,3 +133,31 @@ defineMode(); //cette fonction s'applique une fois on ouvre la page
 // addBtn.addEventListener("mouseout", ()=>{
 //     addBtn.style.color="yellow";
 // })  
+
+
+var tab_of_members=[];
+
+// ------------  fonction qui ajoute un nouveau membre en cliquant sur le boutton add -------------------
+function ajouter_membre(){
+    total_number.innerHTML=tab_of_members.length+ +1;
+    var membre = {
+        fullname : fullname.value,
+        phonenumber : phonenumber.value,
+        slvl : slvl.value
+    }
+    tab_of_members.push(membre); //ajouter le membre dans le tableau javascript
+    localStorage.setItem("table",JSON.stringify(tab_of_members));
+    var a_ajouter='';
+    a_ajouter = `
+            <tr>
+                <td>${membre.fullname}</td>
+                <td>${membre.phonenumber}</td>
+                <td>${membre.slvl}</td>
+                <td><i class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
+                <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
+                <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
+            </tr>
+    `
+    tbody.innerHTML+=a_ajouter;
+}
+
