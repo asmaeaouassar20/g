@@ -160,7 +160,7 @@ function ajouter_membre(){
                 <td>${membre.fullname}</td>
                 <td>${membre.phonenumber}</td>
                 <td>${membre.slvl}</td>
-                <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
+                <td><i class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
                 <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
                 <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
             </tr>
@@ -171,6 +171,7 @@ function ajouter_membre(){
 // ------------------ fonction qui permet d'afficher les informations sur la page html -------------
 function afficher(){
     total_number.innerHTML=tab_of_members.length;
+    tbody.innerHTML='';
     for(let i=0 ; i<tab_of_members.length ; i++){
         tbody.innerHTML+=`
         <tr>
@@ -178,9 +179,9 @@ function afficher(){
             <td>${tab_of_members[i].fullname}</td>
             <td>${tab_of_members[i].phonenumber}</td>
             <td>${tab_of_members[i].slvl}</td>
-            <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can" style="color: #e00000;"></i></td>
-            <td><i class="fa-solid fa-pen" style="color: #03a800;"></i></td>
-            <td><i class="fa-solid fa-star" style="color: #d3d600;"></i></td>
+            <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
+            <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
+            <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
         </tr>
         
         `
@@ -190,5 +191,7 @@ afficher();
 
 //------- fonction qui permet de supprimer un membre -------------------
 function supprimer_membre(i){
-    
+    tab_of_members.splice(i,1);
+    localStorage.setItem("table",JSON.stringify(tab_of_members));
+    afficher();
 }
