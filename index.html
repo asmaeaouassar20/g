@@ -25,9 +25,9 @@
             </div>
             <button onclick="ajouter_membre()" id="addBtn"><span>Add</span></button>
         </div>
-
+        <div id="divMsgError" class="cacher">message d'erreur</div>
         <div class="operations">
-            <input type="text" placeholder="search by name" id="btnsearch">
+            <input onkeyup="recherche_nom(this.value)" type="text" placeholder="search by name" id="btnsearch">
             <div class="sort">
                 <button id="btnSortName">sort by name</button>
                 <button id="btnSortBonus">sort by bonus</button>

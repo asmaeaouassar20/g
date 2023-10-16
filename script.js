@@ -20,6 +20,7 @@ var label=document.querySelector("label");
 
 var total_number=document.querySelector("#total_number");
 
+var divMsgError=document.querySelector("#divMsgError");
 
 
 
@@ -75,6 +76,7 @@ function dark_mode(){
     tbody.style.color="#000";
     move.style.backgroundColor="#fff";
     move.style.transform="translateX(30px)";
+    divMsgError.style.color="rgb(254, 132, 132)";
 }
 
 //--- fonction qui  définit le mode lumiere ---
@@ -97,6 +99,7 @@ function light_mode(){
     tbody.style.backgroundColor="rgba(210, 205, 197, 0.455)";
     move.style.backgroundColor="#000";
     move.style.transform="translateX(0px)";
+    divMsgError.style.color="rgba(207, 9, 9, 0.703)";
 }
 
 //------ fct qui permet de manipuler le boutton dark-light toggle ---
@@ -144,6 +147,7 @@ else tab_of_members=[];
 
 // ------------  fonction qui ajoute un nouveau membre en cliquant sur le boutton add -------------------
 function ajouter_membre(){
+    if(validation()){
     var numero_membre_a_ajouter=tab_of_members.length;
     total_number.innerHTML=tab_of_members.length+ +1;
     var membre = {
@@ -167,6 +171,11 @@ function ajouter_membre(){
             </tr>
     `
     tbody.innerHTML+=a_ajouter;
+
+    //lorsque la validation des informations saisies se passe bien, on cache le div d'erreur
+    divMsgError.classList.add("cacher");
+    afficher();
+}
 }
 
 // ------------------ fonction qui permet d'afficher les informations sur la page html -------------
@@ -202,4 +211,67 @@ function ajouter_bonus(i){
     tab_of_members[i].bonus+=1;
     localStorage.setItem("table",JSON.stringify(tab_of_members));
     afficher();
+}
+//----- une fonction qui vide le contenu des inputs ---------
+function vider(){
+    fullname.value='';
+    phonenumber.value='';
+    slvl.value='';
+}
+//---- une fonction qui permet de vérifier si un membre ajouter existe déja dans la liste -------
+function existe(){
+    let exist=false;
+    for(let i=0 ; i<tab_of_members.length ; i++){
+        if(tab_of_members[i].fullname===fullname.value){
+            exist=true;
+            break;
+        }
+    }
+    return exist;
+}
+
+
+//---- fonction qui permet de valider les informations saisies -----
+function validation(){
+    let result=true;
+    if(existe()){
+        result=false;
+        divMsgError.classList.remove("cacher");
+        divMsgError.innerHTML='this name already exists';
+    }
+    if(fullname.value==='' || fullname.value.length>30){
+        result=false;
+        divMsgError.classList.remove("cacher");
+        divMsgError.innerHTML='add a suitable name';
+    }
+    if(phonenumber.value<0 || phonenumber.value.length>12 || phonenumber.value===''){
+        result=false;
+        divMsgError.classList.remove("cacher");
+        divMsgError.innerHTML='add a suitable phone number';
+    }
+    if(!result){
+        vider();
+    }
+    return result;
+}
+
+
+//------- fonction qui permet de rechercher par nom --------------------
+function recherche_nom(nom){
+    tbody.innerHTML='';
+    for(let i=0 ; i<tab_of_members.length ; i++){
+        if(tab_of_members[i].fullname.includes(nom)){
+            tbody.innerHTML+=`
+                <tr>
+                    <td class="cacher">${i}</td>
+                    <td>${tab_of_members[i].fullname} (<span>${tab_of_members[i].bonus}</span>)</td>
+                    <td>${tab_of_members[i].phonenumber}</td>
+                    <td>${tab_of_members[i].slvl}</td>
+                    <td><i onclick="supprimer_membre(${i})" class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
+                    <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
+                    <td><i onclick="ajouter_bonus(${i})" class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
+                </tr>
+            `
+        }
+    }
 }
