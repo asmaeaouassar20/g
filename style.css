@@ -3,18 +3,14 @@
     padding:0;
 }
 body{
-
-
     font-weight: 900;
 }
 .head{
-
     display: flex;
     justify-content: end;
     height: 20px;
     padding-right: 38px;
     padding-top: 10px;
-
 }
 input, .label , td {
     background-color: rgba(210, 205, 197, 0.455);
@@ -23,9 +19,11 @@ input, .label , td {
     width:80%;
     margin: 10px auto;
 }
-
 h1 {
     text-align: center;
+}
+.cacher {
+    display: none;
 }
 /*----------------- dark mode toggle ----------------------------------------*/
 .label {
@@ -47,7 +45,6 @@ h1 {
     margin: 2px;
     transition: all .5s ease;
 }
-
 /*----------------- button ----------------------------------------*/
 button{
     margin: 6px;
@@ -56,7 +53,7 @@ button{
     font-weight: 700;
     cursor:pointer;
 }
-/*----------------- input ----------------------------------------*/
+/*----------------- input----------------------------------------*/
 input{
     border:none;
     font-weight: 700;
@@ -67,7 +64,6 @@ input::placeholder{
     font-weight: 400;
     word-spacing: 5px;
 }
-
 /*----------------- nombre des membres du club ----------------------------------------*/
 .number_of_members{
     text-align: center;
@@ -86,24 +82,22 @@ input::placeholder{
 .info{
     width:60%;
 }
-
-
 .info input {
     width: 90%;
     margin:2px;
     border-radius: 8px;
     padding: 10px;
 }
-/*----------------- bouton d'ajout ----------------------------------------*/
-#addBtn {
+/*----------------- mode :  ajout // light ----------------------------------------*/
+.addBtnClass {
     width:55px;
     height:100px;
     border-radius: 8px;
-    background-color: rgb(199, 227, 157);
     position:relative;
     overflow: hidden;
+    background-color: rgb(199, 227, 157);
 }
-#addBtn::before{
+.addBtnClass::before{
     content:" ";
     width:0;
     height: 0;
@@ -114,32 +108,111 @@ input::placeholder{
     top:50%;
     transform: translate(-50%,-50%);
     transition: width .4s ease, height .2s ease;
- 
 }
-#addBtn:hover::before{
+.addBtnClass:hover::before{
     width:120px;
     height:120px;
 }
-#addBtn span {
+.addBtnClass span {
     position: relative;
     z-index:1;
 }
-
-
+/*----------------- mode :  modifier // light ----------------------------------------*/
+.addBtnClassNew {
+    width:55px;
+    height:100px;
+    border-radius: 8px;
+    position:relative;
+    overflow: hidden;
+    background-color: rgb(174, 174, 255);
+}
+.addBtnClassNew::before{
+    content:" ";
+    width:0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgb(198, 198, 254);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    transition: width .4s ease, height .2s ease;
+}
+.addBtnClassNew:hover::before{
+    width:120px;
+    height:120px;
+}
+.addBtnClassNew #spanUpBtn {
+    position: relative;
+    z-index:1;
+} 
 .operations{
     margin-top:30px;
     text-align: center;
+}
+/*----------------- mode :  ajout // dark ----------------------------------------*/
+.addBtnClassDarkMode {
+    width:55px;
+    height:100px;
+    border-radius: 8px;
+    position:relative;
+    overflow: hidden;
+    background-color: rgb(69, 114, 0);
+}
+.addBtnClassDarkMode::before{
+    content:" ";
+    width:0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(137, 171, 85, 0.578);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    transition: width .4s ease, height .2s ease;
+}
+.addBtnClassDarkMode:hover::before{
+    width:120px;
+    height:120px;
+}
+.addBtnClassDarkMode span {
+    position: relative;
+    z-index:1;
+}
+/*----------------- mode :  modifier // dark ----------------------------------------*/
+.addBtnClassDarkModeNew {
+    width:55px;
+    height:100px;
+    border-radius: 8px;
+    position:relative;
+    overflow: hidden;
+    background-color: rgb(0, 0, 156);
+}
+.addBtnClassDarkModeNew::before{
+    content:" ";
+    width:0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgb(69, 101, 231);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    transition: width .4s ease, height .2s ease;
+}
+.addBtnClassDarkModeNew:hover::before{
+    width:120px;
+    height:120px;
+}
+.addBtnClassDarkModeNew span {
+    position: relative;
+    z-index:1;
 }
 /* ------------- search  input ------------------------------------ */
 .operations input {
     width:300px;
     margin-right: 70px;
     padding: 4px;
-}
-
-
-.operations .sort {
-    margin-right: 70px;
 }
 /*------------------ boutons de trie -------------------------*/
 .sort button {
@@ -151,9 +224,11 @@ input::placeholder{
 .sort button:hover{
     transform: scale(1.1);
 }
+.operations .sort {
+    margin-right: 70px;
+}
 /*------------------ table -------------------------*/
 td{
-    /* border: 1px solid #683d01; */
     border-radius: 4px;
 }
 td,th{
@@ -164,7 +239,6 @@ table {
     margin: 50px auto;
     width:90%;
     font-size: 20px;
-
 }
 /*----------------------------- icone de suppression -------------------------------*/
 .iconee{
@@ -173,11 +247,6 @@ table {
 }
 .iconee:hover{
     transform: scale(1.5);
-}
-
-/*----------------- cacher la premiere colonne du tableau qui contient la numérotation des membres --------------------*/
-.cacher {
-    display: none;
 }
 /*---------  le div qui affiche l'erreur -------------*/
 #divMsgError{
@@ -188,5 +257,4 @@ table {
     font-weight:900;
     letter-spacing: 1px;
     color:rgba(207, 9, 9, 0.703);
-
 }

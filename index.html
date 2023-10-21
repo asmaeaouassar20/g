@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Gestion des membres d'un club</title>
 </head>
+
 <body>
+    <!-- cette partie contient le bouton qui bascule entre le mode sombre et le mode lumiere -->
     <div class="head">
         <input type="checkbox" id="modeBtn" style="visibility:hidden">
         <label for="modeBtn" class="label">
             <div class="move"></div>
         </label>
     </div>
+
+
     <div class="container">
-        <h1>Name of the club</h1>
-        <div class="number_of_members">{ <span id="total_number"></span> }</div>
+
+        <h1>le nom du club</h1>
+
+        <div class="number_of_members">{ <span id="total_number"></span> }</div> <!-- compter le nombre des membres inscrits -->
+
+        <!-- cette partie est dédiée à la saisie des informations des membres inscrits -->
         <div class="add">
             <div class="info">
-                <div><input type="text" placeholder="full name" id="fullname"></div>
-                <div><input type="number" placeholder="phone number" id="phonenumber"></div>
-                <div><input type="text" placeholder="school level" id="slvl"></div>
+                <div><input type="text" placeholder="nom et prénom" id="fullname"></div>
+                <div><input type="number" placeholder="numéro de téléphone" id="phonenumber"></div>
+                <div><input type="text" placeholder="niveau scolaire" id="slvl"></div>
             </div>
-            <button onclick="ajouter_membre()" id="addBtn"><span>Add</span></button>
+            <button onclick="ajouter_membre()" id="addBtn" class="addBtnClass"><span id="spanAddBtn">ajouter</span><span
+                    id="spanUpBtn"></span></button>
         </div>
-        <div id="divMsgError" class="cacher">message d'erreur</div>
+
+        <div id="divMsgError" class="cacher"></div><!-- messages qui apparait dans le cas d'erreur -->
+        
         <div class="operations">
-            <input onkeyup="recherche_nom(this.value)" type="text" placeholder="search by name" id="btnsearch">
+            <input onkeyup="recherche_nom(this.value)" type="text" placeholder="chercher par nom" id="btnsearch">
             <div class="sort">
-                <button id="btnSortName">sort by name</button>
-                <button id="btnSortBonus">sort by bonus</button>
+                <button onclick="trier_par_nom()" id="btnSortName">trier par nom</button>
+                <button onclick="trier_par_bonus()" id="btnSortBonus">trier par bonus</button>
             </div>
         </div>
 
@@ -39,37 +53,22 @@
                 <thead>
                     <tr>
                         <th class="cacher"></th>
-                        <th>Full Name (bonus)</th>
-                        <th>phone number</th>
-                        <th>niveau</h>
-                        <th>delete</td>
-                        <th>update</th>
+                        <th>nom et prénom (bonus)</th>
+                        <th>numéro de téléphone</th>
+                        <th>niveau scolaire</h>
+                        <th>supprimer</td>
+                        <th>modifier</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>asmae aouassar (8)</td>
-                        <td>0688690708</td>
-                        <td>1 cycle</td>
-                        <td><i class="fa-solid fa-trash-can iconee" style="color: #e00000;"></i></td>
-                        <td><i class="fa-solid fa-pen iconee" style="color: #03a800;"></i></td>
-                        <td><i class="fa-solid fa-star iconee" style="color: #d3d600;"></i></td>
-                   </tr>
-
-                   <tr>
-                    <td>asmae aouassar (8)</td>
-                    <td>0688690708</td>
-                    <td>1 cycle</td>
-                    <td><i class="fa-solid fa-trash-can" style="color: #e00000;"></i></td>
-                    <td><i class="fa-solid fa-pen" style="color: #03a800;"></i></td>
-                    <td><i class="fa-solid fa-star" style="color: #d3d600;"></i></td>
-               </tr>
-                </tbody> -->
+                   
+                </tbody> 
             </table>
         </div>
     </div>
 
     <script src="./script.js"></script>
 </body>
+
 </html>
