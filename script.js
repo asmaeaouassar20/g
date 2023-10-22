@@ -176,7 +176,7 @@ function ajouter_membre(){
     var numero_membre_a_ajouter=tab_of_members.length;
     total_number.innerHTML=tab_of_members.length+ +1;
     var membre = {
-        fullname : fullname.value,
+        fullname : fullname.value.toLowerCase(),
         phonenumber : phonenumber.value,
         slvl : slvl.value,
         bonus: 0 //lorsqu'un membre s'ajoute pour la premiere fois, il a bonus=0
@@ -204,7 +204,7 @@ function ajouter_membre(){
     }}
     if(mode_ajout_modifier==="modifier"){
         if(validation()){
-        tab_of_members[indice_de_membre_a_changer].fullname=fullname.value;
+        tab_of_members[indice_de_membre_a_changer].fullname=fullname.value.toLowerCase();
         tab_of_members[indice_de_membre_a_changer].phonenumber=phonenumber.value;
         tab_of_members[indice_de_membre_a_changer].slvl=slvl.value;
         annuler_changes();
